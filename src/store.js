@@ -1,19 +1,11 @@
-import { createStore } from "redux";
+import { createStore, combineReducers } from "redux";
 import todos from "./reducers/todos";
-const store = createStore(todos);
-
-store.dispatch({
-  type: "ADD_TODO",
-  todo: {
-    id: 0,
-    text: "hmdl",
-    completed: false
-  }
-});
-
-store.dispatch({
-  type: "DELETE_TODO",
-  id: 0
-});
+import filter from "./reducers/filter";
+const store = createStore(
+  combineReducers({
+    todos,
+    filter
+  })
+);
 
 export default store;
