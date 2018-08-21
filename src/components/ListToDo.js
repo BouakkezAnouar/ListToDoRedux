@@ -9,22 +9,22 @@ const ListToDo = ({ onAddToDo = () => {}, list = [] }) => {
   let input; // the input variable which will hold reference to the input element
   return (
     <div>
-      <div>
+      <form
+        onSubmit={e => {
+          e.preventDefault();
+          if (!input.value.trim()) return;
+          onAddToDo(input.value);
+          input.value = "";
+        }}
+      >
         <input
           ref={node => {
             // assign the node reference to the input variable
             input = node;
           }}
         />
-        <button
-          onClick={() => {
-            onAddToDo(input.value);
-            input.value = "";
-          }}
-        >
-          add
-        </button>
-      </div>
+        <button type="submit">Add todo</button>
+      </form>
       <div>
         <Filter>All</Filter> ,<Filter>Completed</Filter>,
         <Filter>NotCompleted</Filter>
