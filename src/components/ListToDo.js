@@ -2,8 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import ToDo from "./ToDo";
 import Filter from "./Filter";
+import { addtodo, getVisibleList } from "../actions/actions";
 
-let nextId = 0;
+window.nextId = 0;
 const ListToDo = ({ onAddToDo = () => {}, list = [] }) => {
   let input; // the input variable which will hold reference to the input element
   return (
@@ -35,30 +36,6 @@ const ListToDo = ({ onAddToDo = () => {}, list = [] }) => {
       </div>
     </div>
   );
-};
-
-const addtodo = text => {
-  return {
-    type: "ADD_TODO",
-    todo: {
-      id: nextId++,
-      text,
-      completed: false
-    }
-  };
-};
-
-const getVisibleList = (list, filter) => {
-  switch (filter) {
-    case "All":
-      return list;
-    case "Completed":
-      return list.filter(el => el.completed !== false);
-    case "NotCompleted":
-      return list.filter(el => el.completed === false);
-    default:
-      return list;
-  }
 };
 
 const mapStateToProps = state => {

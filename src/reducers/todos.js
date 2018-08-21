@@ -4,18 +4,18 @@ const todos = (state = [], action) => {
       if (action.todo.text.length === 0) return state;
       return state.concat(action.todo);
     case "TOGGLE_TODO":
-      return state.map(el => {
-        if (el.id === action.id) return { ...el, completed: !el.completed };
-        return el;
-      });
+      return state.map(
+        el => (el.id === action.id ? { ...el, completed: !el.completed } : el)
+      );
     case "DELETE_TODO":
       return state.filter(el => el.id !== action.id);
     case "EDIT_TODO":
-      return state.map(el => {
-        if (el.id === action.todo.id)
-          return { ...el, text: prompt("edit todo", action.todo.text) };
-        return el;
-      });
+      return state.map(
+        el =>
+          el.id === action.todo.id
+            ? { ...el, text: prompt("edit todo", action.todo.text) }
+            : el
+      );
     default:
       return state;
   }
