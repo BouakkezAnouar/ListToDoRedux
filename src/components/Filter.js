@@ -14,9 +14,7 @@ const Filter = ({ children, setVisibilty, filter }) => {
 
 //amelioration code when fuction return function (implicit return)
 const mapDispatchToProps = dispatch => ({
-  setVisibilt(filter) {
-    dispatch({ type: "SET_FILTER", filter });
-  }
+  setVisibilty: filter => dispatch({ type: "SET_FILTER", filter })
 });
 // amelioration code when function return object
 const mapStateToProps = state => ({ filter: state.filter });

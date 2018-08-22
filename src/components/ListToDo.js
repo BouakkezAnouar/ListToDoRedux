@@ -44,9 +44,7 @@ const mapStateToProps = state => ({
 
 //amelioration
 const mapDispatchToProps = dispatch => ({
-  onAddToDo(text) {
-    dispatch(addtodo(text));
-  }
+  onAddToDo: text => dispatch(addtodo(text))
 });
 
 const ListToDoContainer = connect(
