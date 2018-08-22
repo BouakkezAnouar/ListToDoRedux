@@ -12,12 +12,14 @@ const Filter = ({ children, setVisibilty, filter }) => {
   );
 };
 
-const mapDispatchToProps = dispatch => {
-  return { setVisibilty: filter => dispatch({ type: "SET_FILTER", filter }) };
-};
-const mapStateToProps = state => {
-  return { filter: state.filter };
-};
+//amelioration code when fuction return function (implicit return)
+const mapDispatchToProps = dispatch => ({
+  setVisibilt(filter) {
+    dispatch({ type: "SET_FILTER", filter });
+  }
+});
+// amelioration code when function return object
+const mapStateToProps = state => ({ filter: state.filter });
 
 const FilterContainer = connect(
   mapStateToProps,

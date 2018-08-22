@@ -37,14 +37,17 @@ const ListToDo = ({ onAddToDo = () => {}, list = [] }) => {
     </div>
   );
 };
+//amelioration
+const mapStateToProps = state => ({
+  list: getVisibleList(state.todos, state.filter)
+});
 
-const mapStateToProps = state => {
-  return { list: getVisibleList(state.todos, state.filter) };
-};
-
-const mapDispatchToProps = dispatch => {
-  return { onAddToDo: text => dispatch(addtodo(text)) };
-};
+//amelioration
+const mapDispatchToProps = dispatch => ({
+  onAddToDo(text) {
+    dispatch(addtodo(text));
+  }
+});
 
 const ListToDoContainer = connect(
   mapStateToProps,

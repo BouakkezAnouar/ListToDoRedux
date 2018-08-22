@@ -10,15 +10,13 @@ export const getVisibleList = (list, filter) => {
       return list;
   }
 };
-
-export const addtodo = text => {
-  return {
-    type: "ADD_TODO",
-    todo: {
-      //global varibale nextId
-      id: window.nextId++,
-      text,
-      completed: false
-    }
-  };
-};
+//amelioration code when fuction return object
+export const addtodo = text => ({
+  type: "ADD_TODO",
+  todo: {
+    //global varibale nextId
+    id: window.nextId++,
+    text,
+    completed: false
+  }
+});
